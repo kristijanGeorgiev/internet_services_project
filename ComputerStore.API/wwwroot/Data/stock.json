@@ -1,0 +1,14 @@
+[
+ {
+    "Name": "Memory 64MB",
+    "Categories": ["MEM"],
+    "Price": 300.99,
+   "Quantity": 5
+ },
+ {
+   "Name": "Wireless Keyboard",
+   "Categories": ["Keyboard ", "Periphery"],
+   "Price": 139.99,
+   "Quantity": 6
+ }
+]
