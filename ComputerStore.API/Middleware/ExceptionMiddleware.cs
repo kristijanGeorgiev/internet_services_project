@@ -21,7 +21,7 @@ namespace ComputerStore.API.Middleware
         {
             try
             {
-                await _next(context); // pass control to the next middleware/component
+                await _next(context);
             }
             catch (Exception ex)
             {
