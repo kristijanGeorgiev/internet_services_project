@@ -30,7 +30,6 @@ public class StockRepository : IStockRepository
                     category = new Category { Name = catName };
                     _context.Categories.Add(category);
                 }
-                //categories.Add(category);
             }
 
             var existingProduct = await _context.Products
