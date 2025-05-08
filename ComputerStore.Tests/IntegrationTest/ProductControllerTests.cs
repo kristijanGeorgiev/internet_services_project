@@ -26,7 +26,7 @@ namespace ComputerStore.Tests.Integration
         [Fact]
         public async Task PostProduct_ReturnsCreated_AndCanRetrieve()
         {
-            // Arrange
+            
             var product = new ProductDto
             {
                 Name = "Test Product",
@@ -34,7 +34,7 @@ namespace ComputerStore.Tests.Integration
                 Price = 99.99m
             };
 
-            // Act
+           
             var postResponse = await _client.PostAsJsonAsync("/api/products", product);
             Assert.Equal(HttpStatusCode.Created, postResponse.StatusCode);
 
@@ -42,7 +42,7 @@ namespace ComputerStore.Tests.Integration
             Assert.NotNull(created);
             Assert.Equal("Test Product", created!.Name);
 
-            // GET by ID
+           
             var getResponse = await _client.GetAsync($"/api/products/{created.Id}");
             var fetched = await getResponse.Content.ReadFromJsonAsync<ProductDto>();
 
@@ -53,7 +53,7 @@ namespace ComputerStore.Tests.Integration
         [Fact]
         public async Task UpdateProduct_ReturnsNoContent()
         {
-            // First create
+            
             var product = new ProductDto
             {
                 Name = "Original Product",
@@ -63,15 +63,15 @@ namespace ComputerStore.Tests.Integration
             var postResponse = await _client.PostAsJsonAsync("/api/products", product);
             var created = await postResponse.Content.ReadFromJsonAsync<ProductDto>();
 
-            // Modify
+           
             created!.Name = "Updated Product";
             created.Description = "After Update";
 
-            // PUT
+            
             var putResponse = await _client.PutAsJsonAsync($"/api/products/{created.Id}", created);
             Assert.Equal(HttpStatusCode.NoContent, putResponse.StatusCode);
 
-            // GET
+            
             var getResponse = await _client.GetAsync($"/api/products/{created.Id}");
             var updated = await getResponse.Content.ReadFromJsonAsync<ProductDto>();
 
@@ -81,7 +81,7 @@ namespace ComputerStore.Tests.Integration
         [Fact]
         public async Task DeleteProduct_ReturnsNoContent()
         {
-            // First create
+            
             var product = new ProductDto
             {
                 Name = "To Delete",
@@ -91,11 +91,11 @@ namespace ComputerStore.Tests.Integration
             var postResponse = await _client.PostAsJsonAsync("/api/products", product);
             var created = await postResponse.Content.ReadFromJsonAsync<ProductDto>();
 
-            // DELETE
+            
             var deleteResponse = await _client.DeleteAsync($"/api/products/{created!.Id}");
             Assert.Equal(HttpStatusCode.NoContent, deleteResponse.StatusCode);
 
-            // Confirm it is deleted
+            
             var getResponse = await _client.GetAsync($"/api/products/{created.Id}");
             Assert.Equal(HttpStatusCode.NotFound, getResponse.StatusCode);
         }
