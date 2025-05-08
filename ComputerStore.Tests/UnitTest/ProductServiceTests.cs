@@ -14,7 +14,7 @@ namespace ComputerStore.Tests.UnitTest
         [Fact]
         public async Task GetAllAsync_ReturnsAllProducts()
         {
-            // Arrange
+            
             var products = new List<Product>
             {
                 new() { Id = 1, Name = "CPU", Price = 299.99M },
@@ -26,10 +26,10 @@ namespace ComputerStore.Tests.UnitTest
 
             var service = new ProductService(mockRepo.Object);
 
-            // Act
+            
             var result = await service.GetAllAsync();
 
-            // Assert
+            
             Assert.NotNull(result);
             Assert.Equal(2, result.Count());
         }
@@ -37,7 +37,7 @@ namespace ComputerStore.Tests.UnitTest
         [Fact]
         public async Task CreateAsync_CallsRepositoryWithProduct()
         {
-            // Arrange
+            
             var product = new Product
             {
                 Name = "GPU",
@@ -49,17 +49,17 @@ namespace ComputerStore.Tests.UnitTest
 
             var service = new ProductService(mockRepo.Object);
 
-            // Act
+            
             await service.CreateAsync(product);
 
-            // Assert
+            
             mockRepo.Verify(r => r.AddAsync(It.Is<Product>(p => p.Name == "GPU")), Times.Once);
         }
 
         [Fact]
         public async Task GetByIdAsync_ReturnsCorrectProduct()
         {
-            // Arrange
+            
             var product = new Product { Id = 10, Name = "Monitor", Price = 150.00M };
 
             var mockRepo = new Mock<IProductRepository>();
@@ -67,10 +67,10 @@ namespace ComputerStore.Tests.UnitTest
 
             var service = new ProductService(mockRepo.Object);
 
-            // Act
+            
             var result = await service.GetByIdAsync(10);
 
-            // Assert
+            
             Assert.NotNull(result);
             Assert.Equal("Monitor", result!.Name);
         }
@@ -78,7 +78,7 @@ namespace ComputerStore.Tests.UnitTest
         [Fact]
         public async Task UpdateAsync_CallsRepositoryWithCorrectData()
         {
-            // Arrange
+            
             var updatedProduct = new Product { Id = 5, Name = "Updated Mouse", Price = 29.99M };
 
             var mockRepo = new Mock<IProductRepository>();
@@ -86,10 +86,10 @@ namespace ComputerStore.Tests.UnitTest
 
             var service = new ProductService(mockRepo.Object);
 
-            // Act
+           
             var result = await service.UpdateAsync(5, updatedProduct);
 
-            // Assert
+            
             Assert.True(true);
             mockRepo.Verify(r => r.UpdateAsync(5, updatedProduct), Times.Once);
         }
@@ -97,7 +97,7 @@ namespace ComputerStore.Tests.UnitTest
         [Fact]
         public async Task DeleteAsync_CallsRepositoryAndReturnsDeletedProduct()
         {
-            // Arrange
+           
             var productToDelete = new Product { Id = 3, Name = "RAM", Price = 80.00M };
 
             var mockRepo = new Mock<IProductRepository>();
@@ -105,10 +105,10 @@ namespace ComputerStore.Tests.UnitTest
 
             var service = new ProductService(mockRepo.Object);
 
-            // Act
+            
             var result = await service.DeleteAsync(3);
 
-            // Assert
+            
             Assert.NotNull(result);
             Assert.Equal(3, result!.Id);
             mockRepo.Verify(r => r.DeleteAsync(3), Times.Once);
