@@ -8,12 +8,12 @@ namespace ComputerStore.API.Mappings
     {
         public AutoMapperProfile()
         {
-            // Map Product <-> ProductDto
+            
             CreateMap<Product, ProductDto>()
                 .ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.Categories.Select(c => c.Name)))
                 .ReverseMap()
                 .ForMember(dest => dest.Categories, opt => opt.Ignore());
-            // Map Product <-> StockDto
+            
             CreateMap<Product, StockDto>()
                 .ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.Categories.Select(c => c.Name)))
                 .ReverseMap()
