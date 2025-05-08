@@ -16,7 +16,7 @@ namespace ComputerStore.Tests.Integration
         [Fact]
         public async Task Post_ImportStock_ReturnsOk()
         {
-            // Arrange
+            
             var importProducts = new List<StockDto>
     {
         new StockDto
@@ -28,10 +28,10 @@ namespace ComputerStore.Tests.Integration
         }
     };
 
-            // Act
+          
             var response = await _client.PostAsJsonAsync("/api/Stock/import", importProducts);
 
-            // Assert
+            
             Assert.NotNull(response);
             Assert.True(response.IsSuccessStatusCode, $"Expected success status code but got {response.StatusCode}");
             Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
