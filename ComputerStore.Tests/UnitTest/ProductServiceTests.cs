@@ -14,7 +14,11 @@ namespace ComputerStore.Tests.UnitTest
         [Fact]
         public async Task GetAllAsync_ReturnsAllProducts()
         {
+<<<<<<< HEAD
            
+=======
+            
+>>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             var products = new List<Product>
             {
                 new() { Id = 1, Name = "CPU", Price = 299.99M },
@@ -86,7 +90,11 @@ namespace ComputerStore.Tests.UnitTest
 
             var service = new ProductService(mockRepo.Object);
 
+<<<<<<< HEAD
             
+=======
+           
+>>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             var result = await service.UpdateAsync(5, updatedProduct);
 
             
@@ -97,7 +105,11 @@ namespace ComputerStore.Tests.UnitTest
         [Fact]
         public async Task DeleteAsync_CallsRepositoryAndReturnsDeletedProduct()
         {
+<<<<<<< HEAD
             
+=======
+           
+>>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             var productToDelete = new Product { Id = 3, Name = "RAM", Price = 80.00M };
 
             var mockRepo = new Mock<IProductRepository>();

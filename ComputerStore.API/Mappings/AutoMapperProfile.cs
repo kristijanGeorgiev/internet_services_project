@@ -8,6 +8,7 @@ namespace ComputerStore.API.Mappings
     {
         public AutoMapperProfile()
         {
+<<<<<<< HEAD
          
             CreateMap<Product, ProductDto>()
                 .ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.Categories.Select(c => c.Name)))
@@ -29,6 +30,24 @@ namespace ComputerStore.API.Mappings
                 .ReverseMap()
                 .ForMember(dest => dest.Products, opt => opt.Ignore());
 
+=======
+            
+            CreateMap<Product, ProductDto>()
+                .ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.Categories.Select(c => c.Name)))
+                .ReverseMap()
+                .ForMember(dest => dest.Categories, opt => opt.Ignore());
+            
+            CreateMap<Product, StockDto>()
+                .ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.Categories.Select(c => c.Name)))
+                .ReverseMap()
+                .ForMember(dest => dest.Categories, opt => opt.Ignore());
+
+           
+            CreateMap<Category, CategoryDto>().ReverseMap();
+            CreateMap<Product, ProductDto>().ReverseMap();
+
+           
+>>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             CreateMap<string, Category>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src));
 

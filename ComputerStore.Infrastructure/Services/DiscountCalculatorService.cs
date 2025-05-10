@@ -42,7 +42,11 @@ namespace Infrastructure.Services
             }
 
 
+<<<<<<< HEAD
          
+=======
+            
+>>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             decimal total = basketProducts.Sum(x => x.ProductPrice);
 
             return new DiscountResultDto

@@ -23,7 +23,11 @@ namespace ComputerStore.Tests.Integration
             
             var response = await _client.GetAsync("/api/categories");
 
+<<<<<<< HEAD
             
+=======
+           
+>>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 
@@ -38,7 +42,11 @@ namespace ComputerStore.Tests.Integration
                 Products = new List<Product>()
             };
 
+<<<<<<< HEAD
            
+=======
+            
+>>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             var postResponse = await _client.PostAsJsonAsync("/api/categories", newCategory);
 
             
@@ -47,11 +55,19 @@ namespace ComputerStore.Tests.Integration
             Assert.NotNull(created);
             Assert.Equal("Test Category", created!.Name);
 
+<<<<<<< HEAD
             
             var getResponse = await _client.GetAsync($"/api/categories/{created.Id}");
             var fetched = await getResponse.Content.ReadFromJsonAsync<Category>();
 
            
+=======
+           
+            var getResponse = await _client.GetAsync($"/api/categories/{created.Id}");
+            var fetched = await getResponse.Content.ReadFromJsonAsync<Category>();
+
+            
+>>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             Assert.Equal(HttpStatusCode.OK, getResponse.StatusCode);
             Assert.Equal(created.Id, fetched!.Id);
         }
@@ -96,7 +112,11 @@ namespace ComputerStore.Tests.Integration
             var postResponse = await _client.PostAsJsonAsync("/api/categories",  category);
             var created = await postResponse.Content.ReadFromJsonAsync<CategoryDto>();
 
+<<<<<<< HEAD
           
+=======
+            
+>>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             var deleteResponse = await _client.DeleteAsync($"/api/categories/{created!.Id}");
             Assert.Equal(HttpStatusCode.NoContent, deleteResponse.StatusCode);
 

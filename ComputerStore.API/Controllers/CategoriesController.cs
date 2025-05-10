@@ -60,7 +60,11 @@ namespace ComputerStore.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = category.Id }, createdDto);
         }
 
+<<<<<<< HEAD
         
+=======
+       
+>>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, CategoryDto categoryDto)
         {

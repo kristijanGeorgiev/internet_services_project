@@ -19,7 +19,11 @@ namespace ComputerStore.API.Controllers
             _mapper = mapper;
         }
 
+<<<<<<< HEAD
        
+=======
+        
+>>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
         [HttpGet]
         public async Task<ActionResult<List<ProductDto>>> GetAll()
         {
@@ -28,7 +32,11 @@ namespace ComputerStore.API.Controllers
             return Ok(productsDto);
         }
 
+<<<<<<< HEAD
         
+=======
+       
+>>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductDto>> GetById(int id)
         {
@@ -51,7 +59,11 @@ namespace ComputerStore.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = product.Id }, createdDto);
         }
 
+<<<<<<< HEAD
         
+=======
+       
+>>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, ProductDto ProductDto)
         {
