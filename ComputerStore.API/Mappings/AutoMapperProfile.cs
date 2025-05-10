@@ -8,29 +8,34 @@ namespace ComputerStore.API.Mappings
     {
         public AutoMapperProfile()
         {
-            // Map Product <-> ProductDto
+         
             CreateMap<Product, ProductDto>()
                 .ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.Categories.Select(c => c.Name)))
                 .ReverseMap()
-                .ForMember(dest => dest.Categories, opt => opt.Ignore()); // Optional: Handle manually if needed
+                .ForMember(dest => dest.Categories, opt => opt.MapFrom(src =>
+                    src.Categories.Select(name => new Category { Name = name }).ToList()
+                ));
 
-            // Map Product <-> StockDto
+           
             CreateMap<Product, StockDto>()
                 .ForMember(dest => dest.Categories, opt => opt.MapFrom(src => src.Categories.Select(c => c.Name)))
                 .ReverseMap()
-                .ForMember(dest => dest.Categories, opt => opt.Ignore()); // Optional: Handle separately
+                .ForMember(dest => dest.Categories, opt => opt.MapFrom(src =>
+                    src.Categories.Select(name => new Category { Name = name }).ToList()
+                ));
 
-            // Map Category <-> CategoryDto
-            CreateMap<Category, CategoryDto>().ReverseMap();
-            CreateMap<Product, ProductDto>().ReverseMap();
+            CreateMap<Category, CategoryDto>()
+                .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.Products.Select(p => p.Name)))
+                .ReverseMap()
+                .ForMember(dest => dest.Products, opt => opt.Ignore());
 
-            // Map string <-> Category (useful for manual mapping)
             CreateMap<string, Category>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src));
 
             CreateMap<Category, string>()
                 .ConvertUsing(src => src.Name);
 
+           
             CreateMap<string, Product>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src));
 

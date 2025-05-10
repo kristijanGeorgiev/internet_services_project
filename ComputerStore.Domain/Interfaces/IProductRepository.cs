@@ -10,6 +10,8 @@ namespace ComputerStore.Application.Interfaces
         Task<bool> UpdateAsync(int id, Product product);
         Task<Product?> DeleteAsync(int id);
         Task<List<Product>> GetByIdsAsync(List<int> productIds);
-
+        Task<List<Category>> GetExistingCategoriesByNameAsync(List<string> names);
+        Task<Category?> GetCategoryByNameAsync(string name);
+        Task AddCategoriesAsync(List<Category> categories);
     }
 }

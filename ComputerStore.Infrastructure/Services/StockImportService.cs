@@ -1,19 +1,25 @@
 ﻿using ComputerStore.Application.DTOs;
 using ComputerStore.Application.Interfaces;
 
-namespace ComputerStore.Application.Services;
-
-public class StockImportService : IStockImportService
+namespace ComputerStore.Application.Services
 {
-    private readonly IStockRepository _repository;
-
-    public StockImportService(IStockRepository repository)
+    public class StockImportService : IStockImportService
     {
-        _repository = repository;
-    }
+        private readonly IStockRepository _repository;
 
-    public async Task ImportAsync(List<StockDto> importProducts)
-    {
-        await _repository.ImportAsync(importProducts);
+        public StockImportService(IStockRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public async Task ImportAsync(List<StockDto> importProducts)
+        {
+            if (importProducts == null || !importProducts.Any())
+            {
+                throw new ArgumentException("No stock data provided.");
+            }
+
+            await _repository.ImportAsync(importProducts);
+        }
     }
 }

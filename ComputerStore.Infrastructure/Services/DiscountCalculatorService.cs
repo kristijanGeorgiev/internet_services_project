@@ -42,7 +42,7 @@ namespace Infrastructure.Services
             }
 
 
-            // Total Price
+         
             decimal total = basketProducts.Sum(x => x.ProductPrice);
 
             return new DiscountResultDto

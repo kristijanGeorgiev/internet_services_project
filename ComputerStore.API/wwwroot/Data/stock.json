@@ -1,14 +1,26 @@
 [
  {
-    "Name": "Memory 64MB",
-    "Categories": ["MEM"],
+    "Name": "HPE1.2TB",
+    "Categories": ["HDD"],
     "Price": 300.99,
    "Quantity": 5
  },
- {
-   "Name": "Wireless Keyboard",
-   "Categories": ["Keyboard ", "Periphery"],
-   "Price": 139.99,
-   "Quantity": 6
- }
+  {
+    "Name": "Toshiba Canvio",
+    "Categories": [ "HDD"],
+    "Price": 139.99,
+    "Quantity": 6
+  },
+  {
+    "Name": "HPE 3.2TB",
+    "Categories": [ "SDD" ],
+    "Price": 1500.00,
+    "Quantity": 3
+  },
+  {
+    "Name": "HPE MSA",
+    "Categories": [ "SDD" ],
+    "Price": 1200.00,
+    "Quantity": 5
+  }
 ]

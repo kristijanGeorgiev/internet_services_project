@@ -14,7 +14,7 @@ namespace ComputerStore.Tests.UnitTest
         [Fact]
         public async Task GetAllAsync_ReturnsAllCategories()
         {
-            // Arrange
+            
             var categories = new List<Category>
             {
                 new() { Id = 1, Name = "CPUs" },
@@ -26,10 +26,10 @@ namespace ComputerStore.Tests.UnitTest
 
             var service = new CategoryService(mockRepo.Object);
 
-            // Act
+            
             var result = await service.GetAllAsync();
 
-            // Assert
+            
             Assert.NotNull(result);
             Assert.Equal(2, result.Count());
         }
@@ -37,7 +37,7 @@ namespace ComputerStore.Tests.UnitTest
         [Fact]
         public async Task CreateAsync_CallsRepositoryWithCategory()
         {
-            // Arrange
+            
             var category = new Category
             {
                 Name = "GPUs",
@@ -49,17 +49,17 @@ namespace ComputerStore.Tests.UnitTest
 
             var service = new CategoryService(mockRepo.Object);
 
-            // Act
+            
             await service.CreateAsync(category);
 
-            // Assert
+            
             mockRepo.Verify(r => r.AddAsync(It.Is<Category>(c => c.Name == "GPUs")), Times.Once);
         }
 
         [Fact]
         public async Task GetByIdAsync_ReturnsCorrectCategory()
         {
-            // Arrange
+            
             var category = new Category { Id = 5, Name = "Monitors" };
 
             var mockRepo = new Mock<ICategoryRepository>();
@@ -67,10 +67,10 @@ namespace ComputerStore.Tests.UnitTest
 
             var service = new CategoryService(mockRepo.Object);
 
-            // Act
+            
             var result = await service.GetByIdAsync(5);
 
-            // Assert
+           
             Assert.NotNull(result);
             Assert.Equal("Monitors", result!.Name);
         }
@@ -78,7 +78,7 @@ namespace ComputerStore.Tests.UnitTest
         [Fact]
         public async Task UpdateAsync_CallsRepositoryWithCorrectData()
         {
-            // Arrange
+            
             var updatedCategory = new Category { Id = 7, Name = "Updated Mice" };
 
             var mockRepo = new Mock<ICategoryRepository>();
@@ -86,10 +86,10 @@ namespace ComputerStore.Tests.UnitTest
 
             var service = new CategoryService(mockRepo.Object);
 
-            // Act
+            
             var result = await service.UpdateAsync(7, updatedCategory);
 
-            // Assert
+            
             Assert.True(result);
             mockRepo.Verify(r => r.UpdateAsync(7, updatedCategory), Times.Once);
         }
@@ -97,7 +97,7 @@ namespace ComputerStore.Tests.UnitTest
         [Fact]
         public async Task DeleteAsync_CallsRepositoryAndReturnsDeletedCategory()
         {
-            // Arrange
+            
             var categoryToDelete = new Category { Id = 9, Name = "RAM" };
 
             var mockRepo = new Mock<ICategoryRepository>();
@@ -105,10 +105,10 @@ namespace ComputerStore.Tests.UnitTest
 
             var service = new CategoryService(mockRepo.Object);
 
-            // Act
+            
             var result = await service.DeleteAsync(9);
 
-            // Assert
+            
             Assert.NotNull(result);
             Assert.Equal(9, result!.Id);
             mockRepo.Verify(r => r.DeleteAsync(9), Times.Once);

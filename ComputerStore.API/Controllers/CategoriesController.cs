@@ -28,7 +28,7 @@ namespace ComputerStore.API.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/categories
+        
         [HttpGet]
         public async Task<ActionResult<List<CategoryDto>>> GetAll()
         {
@@ -37,7 +37,7 @@ namespace ComputerStore.API.Controllers
             return Ok(categoriesDto);
         }
 
-        // GET: api/categories/{id}
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<CategoryDto>> GetById(int id)
         {
@@ -49,7 +49,7 @@ namespace ComputerStore.API.Controllers
             return Ok(categoryDto);
         }
 
-        // POST: api/categories
+        
         [HttpPost]
         public async Task<ActionResult<CategoryDto>> Create(CategoryDto categoryDto)
         {
@@ -60,7 +60,7 @@ namespace ComputerStore.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = category.Id }, createdDto);
         }
 
-        // PUT: api/categories/{id}
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, CategoryDto categoryDto)
         {
@@ -73,7 +73,7 @@ namespace ComputerStore.API.Controllers
             return NoContent();
         }
 
-        // DELETE: api/categories/{id}
+       
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
