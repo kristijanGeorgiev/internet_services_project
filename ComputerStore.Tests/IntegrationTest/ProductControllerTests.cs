@@ -34,11 +34,6 @@ namespace ComputerStore.Tests.Integration
                 Price = 99.99m
             };
 
-<<<<<<< HEAD
-            
-=======
-           
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             var postResponse = await _client.PostAsJsonAsync("/api/products", product);
             Assert.Equal(HttpStatusCode.Created, postResponse.StatusCode);
 
@@ -46,11 +41,6 @@ namespace ComputerStore.Tests.Integration
             Assert.NotNull(created);
             Assert.Equal("Test Product", created!.Name);
 
-<<<<<<< HEAD
-            
-=======
-           
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             var getResponse = await _client.GetAsync($"/api/products/{created.Id}");
             var fetched = await getResponse.Content.ReadFromJsonAsync<ProductDto>();
 
@@ -71,11 +61,7 @@ namespace ComputerStore.Tests.Integration
             var postResponse = await _client.PostAsJsonAsync("/api/products", product);
             var created = await postResponse.Content.ReadFromJsonAsync<ProductDto>();
 
-<<<<<<< HEAD
-            
-=======
-           
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
+
             created!.Name = "Updated Product";
             created.Description = "After Update";
 
@@ -83,11 +69,7 @@ namespace ComputerStore.Tests.Integration
             var putResponse = await _client.PutAsJsonAsync($"/api/products/{created.Id}", created);
             Assert.Equal(HttpStatusCode.NoContent, putResponse.StatusCode);
 
-<<<<<<< HEAD
-           
-=======
-            
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
+
             var getResponse = await _client.GetAsync($"/api/products/{created.Id}");
             var updated = await getResponse.Content.ReadFromJsonAsync<ProductDto>();
 
@@ -107,11 +89,6 @@ namespace ComputerStore.Tests.Integration
             var postResponse = await _client.PostAsJsonAsync("/api/products", product);
             var created = await postResponse.Content.ReadFromJsonAsync<ProductDto>();
 
-<<<<<<< HEAD
-           
-=======
-            
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             var deleteResponse = await _client.DeleteAsync($"/api/products/{created!.Id}");
             Assert.Equal(HttpStatusCode.NoContent, deleteResponse.StatusCode);
 

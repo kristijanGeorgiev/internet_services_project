@@ -14,11 +14,6 @@ namespace ComputerStore.Tests.UnitTest
         [Fact]
         public async Task GetAllAsync_ReturnsAllProducts()
         {
-<<<<<<< HEAD
-           
-=======
-            
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             var products = new List<Product>
             {
                 new() { Id = 1, Name = "CPU", Price = 299.99M },
@@ -41,7 +36,6 @@ namespace ComputerStore.Tests.UnitTest
         [Fact]
         public async Task CreateAsync_CallsRepositoryWithProduct()
         {
-            
             var product = new Product
             {
                 Name = "GPU",
@@ -53,10 +47,10 @@ namespace ComputerStore.Tests.UnitTest
 
             var service = new ProductService(mockRepo.Object);
 
-            
-            await service.CreateAsync(product);
+            var result = await service.CreateAsync(product);
 
-            
+            Assert.NotNull(result);
+            Assert.Equal("GPU", result.Name);
             mockRepo.Verify(r => r.AddAsync(It.Is<Product>(p => p.Name == "GPU")), Times.Once);
         }
 
@@ -82,7 +76,6 @@ namespace ComputerStore.Tests.UnitTest
         [Fact]
         public async Task UpdateAsync_CallsRepositoryWithCorrectData()
         {
-            
             var updatedProduct = new Product { Id = 5, Name = "Updated Mouse", Price = 29.99M };
 
             var mockRepo = new Mock<IProductRepository>();
@@ -90,26 +83,16 @@ namespace ComputerStore.Tests.UnitTest
 
             var service = new ProductService(mockRepo.Object);
 
-<<<<<<< HEAD
-            
-=======
-           
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             var result = await service.UpdateAsync(5, updatedProduct);
 
-            
-            Assert.True(true);
+            Assert.True(result);
             mockRepo.Verify(r => r.UpdateAsync(5, updatedProduct), Times.Once);
         }
 
         [Fact]
         public async Task DeleteAsync_CallsRepositoryAndReturnsDeletedProduct()
         {
-<<<<<<< HEAD
-            
-=======
-           
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
+
             var productToDelete = new Product { Id = 3, Name = "RAM", Price = 80.00M };
 
             var mockRepo = new Mock<IProductRepository>();
@@ -127,5 +110,3 @@ namespace ComputerStore.Tests.UnitTest
         }
     }
 }
-
-

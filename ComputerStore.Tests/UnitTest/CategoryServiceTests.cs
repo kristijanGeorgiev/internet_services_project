@@ -26,11 +26,6 @@ namespace ComputerStore.Tests.UnitTest
 
             var service = new CategoryService(mockRepo.Object);
 
-<<<<<<< HEAD
-            
-=======
-           
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             var result = await service.GetAllAsync();
 
             
@@ -63,11 +58,7 @@ namespace ComputerStore.Tests.UnitTest
         [Fact]
         public async Task GetByIdAsync_ReturnsCorrectCategory()
         {
-<<<<<<< HEAD
-            
-=======
-           
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
+
             var category = new Category { Id = 5, Name = "Monitors" };
 
             var mockRepo = new Mock<ICategoryRepository>();
@@ -78,11 +69,6 @@ namespace ComputerStore.Tests.UnitTest
             
             var result = await service.GetByIdAsync(5);
 
-<<<<<<< HEAD
-           
-=======
-            
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             Assert.NotNull(result);
             Assert.Equal("Monitors", result!.Name);
         }
@@ -101,11 +87,6 @@ namespace ComputerStore.Tests.UnitTest
             
             var result = await service.UpdateAsync(7, updatedCategory);
 
-<<<<<<< HEAD
-            
-=======
-           
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             Assert.True(result);
             mockRepo.Verify(r => r.UpdateAsync(7, updatedCategory), Times.Once);
         }
@@ -113,11 +94,7 @@ namespace ComputerStore.Tests.UnitTest
         [Fact]
         public async Task DeleteAsync_CallsRepositoryAndReturnsDeletedCategory()
         {
-<<<<<<< HEAD
-            
-=======
-           
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
+
             var categoryToDelete = new Category { Id = 9, Name = "RAM" };
 
             var mockRepo = new Mock<ICategoryRepository>();
@@ -128,11 +105,6 @@ namespace ComputerStore.Tests.UnitTest
             
             var result = await service.DeleteAsync(9);
 
-<<<<<<< HEAD
-            
-=======
-           
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             Assert.NotNull(result);
             Assert.Equal(9, result!.Id);
             mockRepo.Verify(r => r.DeleteAsync(9), Times.Once);

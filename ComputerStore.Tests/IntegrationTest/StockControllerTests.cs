@@ -28,11 +28,6 @@ namespace ComputerStore.Tests.Integration
         }
     };
 
-<<<<<<< HEAD
-            
-=======
-          
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             var response = await _client.PostAsJsonAsync("/api/Stock/import", importProducts);
 
             
