@@ -29,7 +29,7 @@ namespace ComputerStore.Infrastructure.Repositories
                     {
                         category = new Category { Name = catName };
                         _context.Categories.Add(category);
-                        await _context.SaveChangesAsync(); // Save to get the Id
+                        await _context.SaveChangesAsync();
                     }
                     categories.Add(category);
                 }
