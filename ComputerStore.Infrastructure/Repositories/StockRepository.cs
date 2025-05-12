@@ -12,44 +12,7 @@ namespace ComputerStore.Infrastructure.Repositories
 
         public StockRepository(ApplicationDbContext context)
         {
-<<<<<<< HEAD
             _context = context;
-=======
-            var categoryNames = item.Categories.Select(c => c.Trim()).ToList();
-
-            var categories = new List<Category>();
-            foreach (var catName in categoryNames)
-            {
-                var category = await _context.Categories.FirstOrDefaultAsync(c => c.Name == catName);
-                if (category == null)
-                {
-                    category = new Category { Name = catName };
-                    _context.Categories.Add(category);
-                }
-            }
-
-            var existingProduct = await _context.Products
-                .Include(p => p.Categories)
-                .FirstOrDefaultAsync(p => p.Name == item.Name);
-
-            if (existingProduct != null)
-            {
-                existingProduct.Quantity += item.Quantity;
-                existingProduct.Price = item.Price;
-            }
-            else
-            {
-                var newProduct = new Product
-                {
-                    Name = item.Name,
-                    Price = item.Price,
-                    Description = item.Description,
-                    Categories = categories,
-                    Quantity = item.Quantity
-                };
-                _context.Products.Add(newProduct);
-            }
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
         }
 
         public async Task ImportAsync(List<StockDto> importProducts)
@@ -66,7 +29,7 @@ namespace ComputerStore.Infrastructure.Repositories
                     {
                         category = new Category { Name = catName };
                         _context.Categories.Add(category);
-                        await _context.SaveChangesAsync();
+                        await _context.SaveChangesAsync(); // Save to get the Id
                     }
                     categories.Add(category);
                 }

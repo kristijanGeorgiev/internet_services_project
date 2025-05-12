@@ -41,12 +41,6 @@ namespace Infrastructure.Services
                 discount += firstProduct.ProductPrice * 0.05m;
             }
 
-
-<<<<<<< HEAD
-         
-=======
-            
->>>>>>> edc802387b21bd173eec587af82adce2556b4e1a
             decimal total = basketProducts.Sum(x => x.ProductPrice);
 
             return new DiscountResultDto
